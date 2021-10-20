@@ -20,7 +20,7 @@ describe('search', () => {
       },
     ];
 
-    const result = [{ type: 'file', path: [0, 2] }];
+    const result = [{ type: 'file', folderIndex: 0, fileIndex: 2 }];
 
     const searchResult = search(list, ['4']);
     expect(searchResult).toStrictEqual(result);
@@ -45,7 +45,7 @@ describe('search', () => {
       },
     ];
 
-    const result = [{ type: 'folder', path: [1] }];
+    const result = [{ type: 'folder', folderIndex: 1 }];
 
     const searchResult = search(list, ['6']);
     expect(searchResult).toStrictEqual(result);
