@@ -2,10 +2,10 @@ import type { List } from './move';
 
 type SearchResultFolder = { type: 'folder'; folderIndex: number };
 type SearchResultFile = { type: 'file'; folderIndex: number; fileIndex: number };
-type SearchResult = SearchResultFolder | SearchResultFile;
+type SearchResult = SearchResultFolder | SearchResultFile | null;
 
-export default function search(list: List, ids: string[]): (SearchResult | null)[] {
-  const result: (SearchResult | null)[] = new Array<null>(ids.length).fill(null);
+export default function search(list: List, ids: string[]): SearchResult[] {
+  const result: SearchResult[] = new Array<null>(ids.length).fill(null);
   for (let i = 0; i < list.length; i += 1) {
     const folder = list[i];
     const folderResultIndex = ids.indexOf(folder.id);
