@@ -10,6 +10,7 @@ export default function search(list: List, ids: string[]): (SearchResult | null)
     const folder = list[i];
     const folderResultIndex = ids.indexOf(folder.id);
     if (folderResultIndex !== -1) {
+      ids.splice(folderResultIndex, 1);
       result[folderResultIndex] = { type: 'folder', folderIndex: i };
       if (result.indexOf(null) === -1) {
         return result;
@@ -21,6 +22,7 @@ export default function search(list: List, ids: string[]): (SearchResult | null)
       const file = files[j];
       const fileResultIndex = ids.indexOf(file.id);
       if (fileResultIndex !== -1) {
+        ids.splice(fileResultIndex, 1);
         result[fileResultIndex] = { type: 'file', folderIndex: i, fileIndex: j };
         if (result.indexOf(null) === -1) {
           return result;
